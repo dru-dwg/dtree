@@ -18,8 +18,8 @@ shell=$(basename $SHELL)
 # Current Uptime
 uptime=$(uptime -p)
 
-# Package Count (Debian)
-packages=$(dpkg -l | wc -l)
+# Package Count (Gentoo)
+packages=$(ls -d /var/db/pkg/*/* | wc -l)
 
 # CPU
 cpu=$(lscpu | sed -nr '/Model name/ s/.*:\s*(.*) @ .*/\1/p')
@@ -36,7 +36,7 @@ birth=$(stat / | awk '/Birth: /{print $2}')
 echo -e "  $dir"
 echo -e "       ├── Operating Distro"
 echo -e "       │   └── $distro"
-echo -e "       ├── APT Packages"
+echo -e "       ├── Portage Packages"
 echo -e "       │   └── $packages"
 echo -e "       ├── Kernel"
 echo -e "       │   └── $kernel"
